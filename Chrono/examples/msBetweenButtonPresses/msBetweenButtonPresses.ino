@@ -3,9 +3,10 @@ Cet exemple mesure le temps entre deux pressions sur un unterrupteur.
 */
 
 // INCLUDE CHRONO LIBRARY
+#include <Chrono.h>
 // Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
 // Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
-#include <Chrono.h> 
+
 
 // L'interrupteur est branché à la broche 3 avec un pull-up externe :
 #define BUTTON_PIN 3

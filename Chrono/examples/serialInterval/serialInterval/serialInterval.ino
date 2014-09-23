@@ -26,7 +26,6 @@ Derniere version :  Thomas Ouellet Fredericks, 23 septembre 2014
 // Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
 // Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
 
-
 Chrono envoiMessage;
 
 int mesurePrecedente;

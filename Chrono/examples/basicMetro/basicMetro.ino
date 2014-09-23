@@ -1,6 +1,8 @@
 // INCLUDE CHRONO LIBRARY
+#include <Chrono.h>
 // Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
 // Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
+
 
 // Instanciate a Chrono object.
 Chrono myChrono; 

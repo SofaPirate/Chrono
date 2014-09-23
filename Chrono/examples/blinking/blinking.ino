@@ -3,8 +3,10 @@
  */
  
 // INCLUDE CHRONO LIBRARY
+#include <Chrono.h>
 // Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
 // Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
+
 
 #define LED 13 // Define the led's pin
 
