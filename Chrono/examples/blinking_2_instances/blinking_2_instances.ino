@@ -2,7 +2,10 @@
 // abd will blink output 9 every 125 ms
 
 
-#include <Chrono.h> // Include Chrono library
+// INCLUDE CHRONO LIBRARY
+// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
+// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
+
 #define LED_A 13 // Define a LED pin
 #define LED_B 9 // Define another LED pin
 
@@ -11,7 +14,7 @@ int stateA = HIGH;
 int stateB = HIGH;
 
 // Instantiate a Chrono object.
-Chrono chronoA = Chrono(); 
+Chrono chronoA; 
 
 // Instantiate another metro object and set the interval to 125 milliseconds (0.125 seconds).
 Chrono chronoB = Chrono(); 

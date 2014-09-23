@@ -22,11 +22,10 @@ Derniere version :  Thomas Ouellet Fredericks, 23 septembre 2014
 */
 
 // INCLUDE CHRONO LIBRARY
-// Documentation : https://github.com/thomasfredericks/Metro-Arduino-Wiring
-// Download : https://github.com/thomasfredericks/Metro-Arduino-Wiring/archive/master.zip
-#include <Chrono.h> 
+// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
+// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
 
-Chrono envoiMessage = Chrono();
+Chrono envoiMessage;
 
 int mesurePrecedente;
 

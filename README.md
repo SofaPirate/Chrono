@@ -21,5 +21,4 @@ Copy the Chrono folder to your Arduino libraries.
 DOCUMENTATION
 =====================
 
-See the README.md file in the Chrono folder.
-
+See the README.md file in the Chrono folder. 
