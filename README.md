@@ -57,14 +57,14 @@ Chrono myChrono;
 
 ```
 
-get()
+elapsed()
 =====================
 
 Returns the elasped milliseconds.
 
 ```
 // GET ELAPSED MILLISECONDS :
-unsigned long elapsed = myChrono.get();
+unsigned long elapsed = myChrono.elapsed();
 
 ```
 
@@ -79,34 +79,21 @@ myChrono.restart();
 
 ```
 
-metro(interval) and qmetro(interval)
+passed(interval)
 =====================
-
-You can use Chrono as a metronome for recurring events. 
-Each call to metro(interval) or qmetro(interval) checks if the interval has passed. 
-* If the interval has passed, it returns 1 and restarts the chronometer . 
-* If the interval has not passed, it returns 0.
-
+Returns true if the chronometer passed the interval in milliseconds.
 ```
-// USE CHRONO AS A METRONOME :
-if ( myChrono.metro(1000) ) {
-	// Do something every 1000 milliseconds.
+if ( myChrono.passed(500) ) {
+	// DO SOMETHING IF 500 MS HAVE PASSED.
 }
 
 ```
 
+Combined with restart() you can have a metronome :
 ```
-// USE CHRONO AS A Q METRONOME :
-if ( myChrono.qmetro(1000) ) {
-	// Do something every 1000 milliseconds.
+if ( myChrono.passed(200) ) {
+     myChrono.restart();
+	// DO SOMETHING EVERY 200 MS.
 }
 
 ```
-
-
-qmetro(interval) and metro(interval) are the same except in the way the inteval is calculated.
-
-metro adds the interval to time the metro _should_ have triggered. If your code takes to long for the interval, the lag will be substracted from the next interval.
-
-qmetro calculates the interval from the last time it triggered. This means that it can accumulate lag over time, but is more appropriate in certain situations.
-
