@@ -18,7 +18,7 @@ Copy the Chrono folder to your Arduino libraries.
 
 Basic Example
 =====================
-```
+```arduino
 // INCLUDE CHRONO LIBRARY
 // Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
 // Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
@@ -41,7 +41,7 @@ void loop() {
 
 Include the library
 =====================
-```
+```arduino
 // INCLUDE CHRONO LIBRARY :
 #include <Chrono.h> 
 
@@ -51,7 +51,7 @@ Create an instance
 =====================
 Once a Chrono is created, it starts counting (in milliseconds).
 
-```
+```arduino
 // CREATE A CHRONO INSTANCE :
 Chrono myChrono;
 
@@ -62,7 +62,7 @@ elapsed()
 
 Returns the elasped milliseconds.
 
-```
+```arduino
 // GET ELAPSED MILLISECONDS :
 unsigned long elapsed = myChrono.elapsed();
 
@@ -73,7 +73,7 @@ restart()
 
 Restarts the chronometer.
 
-```
+```arduino
 // RESTART THE CHRONOMETER :
 myChrono.restart();
 
@@ -82,7 +82,7 @@ myChrono.restart();
 passed(interval)
 =====================
 Returns true if the chronometer passed the interval in milliseconds.
-```
+```arduino
 if ( myChrono.passed(500) ) {
 	// DO SOMETHING IF 500 MS HAVE PASSED.
 }
@@ -90,7 +90,7 @@ if ( myChrono.passed(500) ) {
 ```
 
 Combined with restart() you can have a metronome :
-```
+```arduino
 if ( myChrono.passed(200) ) {
      myChrono.restart();
 	// DO SOMETHING EVERY 200 MS.
