@@ -32,7 +32,8 @@ void setup() {
 }
 
 void loop() {
-        if ( envoiMessage.metro(20) ) {
+          if (envoiMessage.passed(20) ) { // elapsed(20) returns true if 20 ms have passed.
+                envoiMessage.restart();  // restart the Chrono 
                   Serial.print("ms "); // "ms" suivi d'un espace
                   Serial.print( millis() ); // la valeur de la mesure
                   Serial.println(); // indicateur de fin de ligne

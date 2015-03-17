@@ -26,14 +26,11 @@ void loop() {
         int newButtonState = digitalRead(BUTTON_PIN);
         if ( previousButtonState != newButtonState ) {
             previousButtonState = newButtonState;
-            
-            unsigned long elapsed = myChrono.get();
-               
-               if ( newButtonState == LOW && elapsed > 10 ) {
+                           
+               if ( newButtonState == LOW && myChrono.passed(10) ) {
                   Serial.print("ms "); 
-                  Serial.print( elapsed ); 
+                  Serial.print( myChrono.elapsed() ); 
                   Serial.println(); 
-                  
                   
                }
                  

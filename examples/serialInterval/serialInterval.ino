@@ -39,7 +39,8 @@ void setup() {
 
 void loop() {
 
-        if ( envoiMessage.metro(20) ) {
+        if ( envoiMessage.passed(20) ) {
+		    envoiMessage.restart();
                
                 // Mesurer la tension a la broche analogique 0 :
                 int nouvelleMesure = analogRead(0);

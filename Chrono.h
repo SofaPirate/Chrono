@@ -13,10 +13,16 @@ class Chrono
 
 public:
   Chrono();
+  bool passed(unsigned long interval);
+  unsigned long elapsed();
+  void restart();
+  
+  // DEPRACATED
+  /*
+
   uint8_t metro(unsigned long interval);
   uint8_t qmetro(unsigned long interval);
-  unsigned long get();
-  void restart();
+	*/
 	
 private:
   unsigned long  previousMillis;

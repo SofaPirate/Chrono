@@ -34,7 +34,8 @@ void setup()
 void loop()
 {
   // Use Chrono as a metronome with an interval of 250 ms : 
-  if ( chronoA.metro(250) ) {
+  if ( chronoA.passed(250) ) {
+    chronoA.restart();
     if (stateA==HIGH)  { 
       stateA=LOW;
     } else {
@@ -44,7 +45,8 @@ void loop()
   }
   
   // Use Chrono as a metronome with an interval of 125 ms : 
-   if ( chronoB.metro(125) ) { 
+   if ( chronoB.passed(125) ) { 
+    chronoB.restart();
     if (stateB==HIGH)  { 
       stateB=LOW;
     } else {

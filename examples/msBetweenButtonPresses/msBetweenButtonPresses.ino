@@ -1,5 +1,5 @@
 /*
-Cet exemple mesure le temps entre deux pressions sur un unterrupteur.
+Cet exemple mesure le temps entre deux pressions sur un interrupteur.
 */
 
 // INCLUDE CHRONO LIBRARY
@@ -31,12 +31,10 @@ void loop() {
         
         if ( previousButtonState != newButtonState ) {
             previousButtonState = newButtonState;
-            
-            unsigned long elapsed = myChrono.get();
-               
-               if ( newButtonState == LOW && elapsed > 10 ) {
+                           
+               if ( newButtonState == LOW && myChrono.passed(10) ) {
                   Serial.print("ms "); 
-                  Serial.print( elapsed ); 
+                  Serial.print( myChrono.elapsed() ); 
                   Serial.println(); 
                   
                   

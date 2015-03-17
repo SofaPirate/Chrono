@@ -18,7 +18,9 @@ void setup() {
 
 void loop() {
   
-  if ( updateTone.metro(100) ) {
+  if ( updateTone.passed(100) ) {
+	updateTone.restart();
+	
      int hz = random(30,11000);
      tone(TONE_PIN , hz);
   }

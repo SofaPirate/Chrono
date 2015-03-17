@@ -15,6 +15,28 @@ Chrono::Chrono()
 }
 
 
+bool Chrono::passed(unsigned long interval)
+{
+   
+  if ( (millis() - previousMillis) >= interval ) return true;
+  
+  return false;
+  
+}
+
+unsigned long Chrono::elapsed() {
+	return millis()-previousMillis;
+}
+
+
+
+void Chrono::restart() 
+{
+  this->previousMillis = millis();
+}
+
+/*
+
 uint8_t Chrono::qmetro(unsigned long interval)
 {
   unsigned long now = millis();
@@ -46,14 +68,8 @@ uint8_t Chrono::metro(unsigned long interval)
   return 0;
 }
 
-void Chrono::restart() 
-{
-  this->previousMillis = millis();
-
-}
-
-unsigned long Chrono::get() {
-	return millis()-previousMillis;
 }
 
 
+
+*/
