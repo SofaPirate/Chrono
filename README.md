@@ -1,15 +1,9 @@
 CHRONO
 =====================
 Chrono library for Arduino or Wiring
-by Thomas Ouellet Fredericks
+by Thomas Ouellet Fredericks and Sofian Audry
 
 This library facilitates the timing of events.
-
-
-DOWNLOAD
-=====================
-Download the latest version here : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
-
 
 INSTALLATION
 =====================
@@ -19,20 +13,31 @@ Copy the Chrono folder to your Arduino libraries.
 Basic Example
 =====================
 ```arduino
-// INCLUDE CHRONO LIBRARY
-// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
-// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
+#include <Chrono.h>
 
 // Instanciate a Chrono object.
-Chrono myChrono; 
+Chrono myChrono;
 
+
+ * Chrono myChrono; // chronometer automatically starts at creation
+ * // ...
+ * myChrono.start(); // you can start (restart) it later
+ * while (!myChrono.passed(2000)) // a 2000 ms loop
+ *  Serial.println(myChrono.elapsed()); // current time
+ *   // do something
+ * // ...
+ */
 void setup() {
+  // Start the chronometer on setup.
+  myChrono.start();
 }
 
 void loop() {
-  // Use Chrono as a metronome with an interval of 1000 ms : 
-  if (myChrono.metro(1000) ) { // metro(1000) returns 1 everytime an interval of 1000 is passed.
+  // Check whether the chronometer has reached 1000 ms
+  if (myChrono.hasPassed(1000)) {
     // Do something here...
+    // Restart the chrono.
+    myChrono.start();
   }
 }
 
@@ -57,10 +62,22 @@ Chrono myChrono;
 
 ```
 
+start()
+=====================
+
+Starts/restarts the chronometer.
+
+```arduino
+// START/RESTART THE CHRONOMETER :
+myChrono.restart();
+
+```
+
+
 elapsed()
 =====================
 
-Returns the elasped milliseconds.
+Returns the elasped time (in milliseconds).
 
 ```arduino
 // GET ELAPSED MILLISECONDS :
@@ -68,31 +85,21 @@ unsigned long elapsed = myChrono.elapsed();
 
 ```
 
-restart()
-=====================
-
-Restarts the chronometer.
-
-```arduino
-// RESTART THE CHRONOMETER :
-myChrono.restart();
-
-```
 
 passed(interval)
 =====================
 Returns true if the chronometer passed the interval in milliseconds.
 ```arduino
-if ( myChrono.passed(500) ) {
+if ( myChrono.hasPassed(500) ) {
 	// DO SOMETHING IF 500 MS HAVE PASSED.
 }
 
 ```
 
-Combined with restart() you can have a metronome :
+Combined with start() you can have a metronome :
 ```arduino
-if ( myChrono.passed(200) ) {
-     myChrono.restart();
+if ( myChrono.hasPassed(200) ) {
+  myChrono.start();
 	// DO SOMETHING EVERY 200 MS.
 }
 
