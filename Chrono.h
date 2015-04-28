@@ -33,8 +33,8 @@
  *
  * Chrono myChrono; // chronometer automatically starts at creation
  * // ...
- * myChrono.start(); // you can start (restart) it later
- * while (!myChrono.hasPassed(2000)) // a 2000 ms loop
+ * myChrono.restart(); // you can start (restart) it later
+ * while (!myChrono.passed(2000)) // a 2000 ms loop
  *  Serial.println(myChrono.elapsed()); // current time
  *   // do something
  * // ...
@@ -49,13 +49,13 @@ public:
   Chrono();
 
   // Starts/restarts the chronometer.
-  void start();
+  void restart();
 
   /// Returns the elapsed time since start (in milliseconds).
   unsigned long elapsed() const;
 
   /// Returns true iff elapsed time has passed given timeout.
-  bool hasPassed(unsigned long timeout) const;
+  bool passed(unsigned long timeout) const;
 };
 
 #endif

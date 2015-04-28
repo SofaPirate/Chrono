@@ -37,7 +37,7 @@ Chrono::Chrono()
   start();
 }
 
-void Chrono::start() 
+void Chrono::restart() 
 {
   _startTime = millis();
 }
@@ -47,7 +47,7 @@ unsigned long Chrono::elapsed() const {
 }
 
 
-bool Chrono::hasPassed(unsigned long timeout) const
+bool Chrono::passed(unsigned long timeout) const
 {
   return (elapsed() >= timeout);
 }
