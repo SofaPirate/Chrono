@@ -32,7 +32,7 @@
  * Chrono myChrono; // chronometer automatically starts at creation
  * // ...
  * myChrono.start(); // you can start (restart) it later
- * while (!myChrono.passed(2000)) // a 2000 ms loop
+ * while (!myChrono.hasPassed(2000)) // a 2000 ms loop
  *  Serial.println(myChrono.elapsed()); // current time
  *   // do something
  * // ...
