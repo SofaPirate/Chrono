@@ -90,6 +90,11 @@ bool SuperChrono::isRunning() const {
   return (_isRunning);
 }
 
+void SuperChrono::delay(unsigned long time) {
+  time += elapsed();
+  while (!passed(time));
+}
+
 unsigned long SuperChrono::elapsed() const {
   return _offset + _isRunning ? (_getTime() - _startTime) : 0;
 }

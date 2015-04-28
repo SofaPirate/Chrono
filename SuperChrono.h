@@ -55,7 +55,7 @@ public:
   // Different sorts of ways to get time.
   enum Resolution { MILLIS, MICROS, SECONDS };
 
-private:
+public:
   // Keeps track of start time (in milliseconds).
   unsigned long _startTime;
 
@@ -99,6 +99,9 @@ public:
 
   /// Returns true iff the chronometer is currently running.
   bool isRunning() const;
+
+  // Blocks execution for a given time.
+  void delay(unsigned long time);
 
   /// Returns the time in seconds (millis() / 1000).
   static unsigned long seconds();
