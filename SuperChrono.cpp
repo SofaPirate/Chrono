@@ -54,19 +54,19 @@ SuperChrono::SuperChrono(Resolution resolution = MILLIS) {
       break;
   }
   // Start.
-  start();
+  restart();
 }
 
-SuperChrono::SuperChrono(unsigned long (*getTime_)(void), bool start=true) : _getTime(getTime_) {
-  if (start)
-    start();
+SuperChrono::SuperChrono(unsigned long (*getTime_)(void), bool startNow=true) : _getTime(getTime_) {
+  if (startNow)
+    restart();
   else {
     _startTime = offset = 0;
     _isRunning = false;
   }
 }
 
-void SuperChrono::start(unsigned long offset = 0) {
+void SuperChrono::restart(unsigned long offset = 0) {
   _startTime = _getTime();
   _offset    = offset;
   _isRunning = true;
@@ -94,7 +94,7 @@ unsigned long SuperChrono::elapsed() const {
   return _offset + _isRunning ? (_getTime() - _startTime) : 0;
 }
 
-bool SuperChrono::hasPassed(unsigned long timeout) const
+bool SuperChrono::passed(unsigned long timeout) const
 {
   return (elapsed() >= timeout);
 }

@@ -40,7 +40,7 @@
  * 
  * SuperChrono chrono;
  * // ...
- * chrono.start(); // start/restart
+ * chrono.restart(); // start/restart
  * // do some stuff
  * chrono.pause();
  * // do more stuff
@@ -77,13 +77,10 @@ public:
    * the chronometer from starting at construction since some functions might
    * trigger errors when called statically.
    */
-  SuperChrono(unsigned long (*getTime_)(void), bool start=true);
+  SuperChrono(unsigned long (*getTime_)(void), bool startNow=true);
   
-  // Resets the
-  void reset();
-
   // Starts/restarts the chronometer with optional starting offset.
-  void start(unsigned long offset = 0);
+  void restart(unsigned long offset = 0);
   
   // Stops/pauses the chronometer.
   void stop();
@@ -98,7 +95,7 @@ public:
   unsigned long elapsed() const;
 
   /// Returns true iff elapsed time has passed given timeout.
-  bool hasPassed(unsigned long timeout) const;
+  bool passed(unsigned long timeout) const;
 
   /// Returns true iff the chronometer is currently running.
   bool isRunning() const;
