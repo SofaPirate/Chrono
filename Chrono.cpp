@@ -34,7 +34,7 @@
 
 Chrono::Chrono()
 {
-  start();
+  restart();
 }
 
 void Chrono::restart() 
