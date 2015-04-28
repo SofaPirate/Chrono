@@ -39,7 +39,7 @@
 #endif
 #include "SuperChrono.h"
 
-SuperChrono::SuperChrono(Resolution resolution = MILLIS) {
+SuperChrono::SuperChrono(Resolution resolution) {
   // Assign appropriate time function.
   switch(resolution) {
     case SECONDS:
@@ -57,16 +57,16 @@ SuperChrono::SuperChrono(Resolution resolution = MILLIS) {
   restart();
 }
 
-SuperChrono::SuperChrono(unsigned long (*getTime_)(void), bool startNow=true) : _getTime(getTime_) {
+SuperChrono::SuperChrono(unsigned long (*getTime_)(void), bool startNow) : _getTime(getTime_) {
   if (startNow)
     restart();
   else {
-    _startTime = offset = 0;
+    _startTime = _offset = 0;
     _isRunning = false;
   }
 }
 
-void SuperChrono::restart(unsigned long offset = 0) {
+void SuperChrono::restart(unsigned long offset) {
   _startTime = _getTime();
   _offset    = offset;
   _isRunning = true;
@@ -96,7 +96,7 @@ void SuperChrono::delay(unsigned long time) {
 }
 
 unsigned long SuperChrono::elapsed() const {
-  return _offset + _isRunning ? (_getTime() - _startTime) : 0;
+  return _offset + (_isRunning ? (_getTime() - _startTime) : 0);
 }
 
 bool SuperChrono::passed(unsigned long timeout) const
@@ -104,7 +104,7 @@ bool SuperChrono::passed(unsigned long timeout) const
   return (elapsed() >= timeout);
 }
 
-static unsigned long SuperChrono::seconds() {
+unsigned long SuperChrono::seconds() {
   return (millis()/1000);
 }
 
