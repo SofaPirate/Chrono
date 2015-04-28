@@ -2,12 +2,8 @@
 By Thomas O Fredericks (tof@t-o-f.info)
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef Chrono_h
-#define Metro_h
-
-#include <inttypes.h>
-
-
+#ifndef CHRONO_H_
+#define CHRONO_H_
 
 /*
  * Example code:
