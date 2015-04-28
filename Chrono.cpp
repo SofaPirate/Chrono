@@ -11,65 +11,23 @@ By Thomas O Fredericks (tof@t-o-f.info)
 
 Chrono::Chrono()
 {
-		
+  start();
 }
 
-
-bool Chrono::passed(unsigned long interval)
+void Chrono::start() 
 {
-   
-  if ( (millis() - previousMillis) >= interval ) return true;
-  
-  return false;
-  
+  _startTime = millis();
 }
 
-unsigned long Chrono::elapsed() {
-	return millis()-previousMillis;
+unsigned long Chrono::elapsed() const {
+	return (millis() - _startTime);
 }
 
 
-
-void Chrono::restart() 
+bool Chrono::hasPassed(unsigned long timeout) const
 {
-  this->previousMillis = millis();
-}
-
-/*
-
-uint8_t Chrono::qmetro(unsigned long interval)
-{
-  unsigned long now = millis();
-   
-  if ( interval == 0 || ((now - previousMillis) >= interval) ) {
-	
-	previousMillis = now;
-	
-    return 1;
-  }
-  
-  return 0;
-}
-
-uint8_t Chrono::metro(unsigned long interval)
-{
-  unsigned long now = millis();
-  
-  if ( interval == 0 ){
-    previousMillis = now;
-	return 1;
-  }
- 
-  if ( (now - previousMillis) >= interval) {
-	previousMillis += interval ; 
-    return 1;
-  }
-  
-  return 0;
-}
-
+  return (millis() - previousMillis >= interval);
 }
 
 
 
-*/
