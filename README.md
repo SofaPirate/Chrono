@@ -4,7 +4,8 @@ Chrono library for Arduino or Wiring
 by Sofian Audry
 based on code by Thomas Ouellet Fredericks
 
-This library facilitates the timing of events.
+Simple chronometer/stopwatch class that counts the time passed since started.
+For a chronometer with more advanced features (pause, resume, add time, multiple time units support, etc) please use the [SuperChrono](http://github.com/sofian/SuperChrono) library.
 
 Installation
 =====================
