@@ -47,7 +47,7 @@ unsigned long Chrono::elapsed() const {
 
 bool Chrono::hasPassed(unsigned long timeout) const
 {
-  return (millis() - previousMillis >= interval);
+  return (elapsed() >= interval);
 }
 
 
