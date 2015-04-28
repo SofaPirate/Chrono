@@ -5,11 +5,13 @@
  * (c) 2015 Sofian Audry        :: info(@)sofianaudry(.)com
  * (c)      Thomas O Fredericks :: tof(@)t-o-f(.)info
  *
- * Based on code from Thomas O Fredericks (tof@t-o-f.info)
- * https://github.com/thomasfredericks/Chrono
- * and
+ * Based on code by Sofian Audry:
+ * https://github.com/sofian/libinteract/blob/master/trunk/arduino/Timer.h
  * http://accrochages.drone.ws/node/90
- *
+ * 
+ * and Thomas O Fredericks (tof@t-o-f.info)
+ * https://github.com/thomasfredericks/Chrono
+ * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
