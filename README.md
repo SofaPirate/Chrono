@@ -4,6 +4,7 @@ SuperChrono library for Arduino or Wiring
 by Sofian Audry
 
 Advanced chronometer/stopwatch class that counts the time passed since started.
+For a chronometer with more basic features but a lower memory trace please use the [Chrono](http://github.com/sofian/Chrono) library.
 
 Installation
 =====================
