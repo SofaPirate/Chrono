@@ -1,11 +1,12 @@
-CHRONO
+Chrono
 =====================
 Chrono library for Arduino or Wiring
-by Thomas Ouellet Fredericks and Sofian Audry
+by Sofian Audry
+based on code by Thomas Ouellet Fredericks
 
 This library facilitates the timing of events.
 
-INSTALLATION
+Installation
 =====================
 Copy the Chrono folder to your Arduino libraries.
 
@@ -18,15 +19,6 @@ Basic Example
 // Instanciate a Chrono object.
 Chrono myChrono;
 
-
- * Chrono myChrono; // chronometer automatically starts at creation
- * // ...
- * myChrono.start(); // you can start (restart) it later
- * while (!myChrono.passed(2000)) // a 2000 ms loop
- *  Serial.println(myChrono.elapsed()); // current time
- *   // do something
- * // ...
- */
 void setup() {
   // Start the chronometer on setup.
   myChrono.start();
@@ -69,7 +61,7 @@ Starts/restarts the chronometer.
 
 ```arduino
 // START/RESTART THE CHRONOMETER :
-myChrono.restart();
+myChrono.start();
 
 ```
 
@@ -86,9 +78,9 @@ unsigned long elapsed = myChrono.elapsed();
 ```
 
 
-passed(interval)
+hasPassed(timeout)
 =====================
-Returns true if the chronometer passed the interval in milliseconds.
+Returns true if the chronometer passed the timeout in milliseconds.
 ```arduino
 if ( myChrono.hasPassed(500) ) {
 	// DO SOMETHING IF 500 MS HAVE PASSED.
