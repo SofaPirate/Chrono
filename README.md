@@ -163,3 +163,15 @@ Serial.println( mySuperChrono.isRunning() ); // will print "1" (true)
 
 ```
 
+delay(time)
+=====================
+
+Waits for some time (in the time unit of the chronometer).
+
+```arduino
+// WAIT FOR 1000 TIME UNITS :
+mySuperChrono.delay(1000);
+
+```
+
+
