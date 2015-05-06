@@ -1,7 +1,5 @@
 
-// INCLUDE CHRONO LIBRARY
-// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
-// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
+// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
 #include <Chrono.h> 
 
 #define BUTTON_PIN 2
@@ -27,7 +25,7 @@ void loop() {
         if ( previousButtonState != newButtonState ) {
             previousButtonState = newButtonState;
                            
-               if ( newButtonState == LOW && myChrono.passed(10) ) {
+               if ( newButtonState == LOW && myChrono.hasPassed(10) ) {
                   Serial.print("ms "); 
                   Serial.print( myChrono.elapsed() ); 
                   Serial.println(); 

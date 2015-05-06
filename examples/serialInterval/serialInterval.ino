@@ -21,11 +21,8 @@ Version originale : Thomas Ouellet Fredericks, 4 novembre 2012
 Derniere version :  Thomas Ouellet Fredericks, 23 septembre 2014
 */
 
-// INCLUDE CHRONO LIBRARY
-#include <Chrono.h>
-// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
-// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
-
+// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+#include <Chrono.h> 
 
 Chrono envoiMessage;
 
@@ -39,7 +36,7 @@ void setup() {
 
 void loop() {
 
-        if ( envoiMessage.passed(20) ) {
+        if ( envoiMessage.hasPassed(20) ) {
 		    envoiMessage.restart();
                
                 // Mesurer la tension a la broche analogique 0 :

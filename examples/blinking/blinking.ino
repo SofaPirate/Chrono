@@ -2,11 +2,8 @@
  This code will blink an LED attached to pin 13 on and off. 
  */
 
-// INCLUDE CHRONO LIBRARY
-#include <Chrono.h>
-// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
-// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
-
+// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+#include <Chrono.h> 
 
 #define LED 13 // Define the led's pin
 
@@ -26,7 +23,7 @@ void loop()
 {
 
 
-  if (ledMetro.passed(20) ) { // elapsed(20) returns true if 20 ms have passed.
+  if (ledMetro.hasPassed(20) ) { // returns true if 20 ms have passed.
     ledMetro.restart();  // restart the Chrono 
     
     if (state==HIGH)  state=LOW;

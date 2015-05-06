@@ -13,7 +13,7 @@ class Chrono
 
 public:
   Chrono();
-  bool passed(unsigned long interval);
+  bool hasPassed(unsigned long interval);
   unsigned long elapsed();
   void restart();
   

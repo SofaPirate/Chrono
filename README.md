@@ -6,9 +6,9 @@ by Thomas Ouellet Fredericks
 This library facilitates the timing of events.
 
 
-DOWNLOAD
+REPOSITORY
 =====================
-Download the latest version here : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
+http://github.com/thomasfredericks/Chrono
 
 
 INSTALLATION
@@ -16,12 +16,11 @@ INSTALLATION
 Copy the Chrono folder to your Arduino libraries.
 
 
-Basic Example
+BASIC EXAMPLE
 =====================
 ```arduino
-// INCLUDE CHRONO LIBRARY
-// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
-// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
+// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+#include <Chrono.h>
 
 // Instanciate a Chrono object.
 Chrono myChrono; 
@@ -31,7 +30,8 @@ void setup() {
 
 void loop() {
   // Use Chrono as a metronome with an interval of 1000 ms : 
-  if (myChrono.metro(1000) ) { // metro(1000) returns 1 everytime an interval of 1000 is passed.
+  if (myChrono.hasPassed(1000) ) { // returns 1 if 1000 ms have passed.
+     myChrono.restart(); // restart the Chrono
     // Do something here...
   }
 }
@@ -39,15 +39,15 @@ void loop() {
 ```
 
 
-Include the library
+INCLUDE THE LIBRARY
 =====================
 ```arduino
-// INCLUDE CHRONO LIBRARY :
+// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
 #include <Chrono.h> 
 
 ```
 
-Create an instance
+CREATE AN INSTANCE
 =====================
 Once a Chrono is created, it starts counting (in milliseconds).
 
@@ -79,11 +79,11 @@ myChrono.restart();
 
 ```
 
-passed(interval)
+hasPassed(interval)
 =====================
 Returns true if the chronometer passed the interval in milliseconds.
 ```arduino
-if ( myChrono.passed(500) ) {
+if ( myChrono.hasPassed(500) ) {
 	// DO SOMETHING IF 500 MS HAVE PASSED.
 }
 
@@ -91,7 +91,7 @@ if ( myChrono.passed(500) ) {
 
 Combined with restart() you can have a metronome :
 ```arduino
-if ( myChrono.passed(200) ) {
+if ( myChrono.hasPassed(200) ) {
      myChrono.restart();
 	// DO SOMETHING EVERY 200 MS.
 }

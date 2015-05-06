@@ -2,11 +2,8 @@
 Cet exemple mesure le temps entre deux pressions sur un interrupteur.
 */
 
-// INCLUDE CHRONO LIBRARY
-#include <Chrono.h>
-// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
-// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
-
+// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+#include <Chrono.h> 
 
 // L'interrupteur est branché à la broche 3 avec un pull-up externe :
 #define BUTTON_PIN 3
@@ -32,7 +29,7 @@ void loop() {
         if ( previousButtonState != newButtonState ) {
             previousButtonState = newButtonState;
                            
-               if ( newButtonState == LOW && myChrono.passed(10) ) {
+               if ( newButtonState == LOW && myChrono.hasPassed(10) ) {
                   Serial.print("ms "); 
                   Serial.print( myChrono.elapsed() ); 
                   Serial.println(); 

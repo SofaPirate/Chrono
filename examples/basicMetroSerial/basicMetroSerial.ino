@@ -14,13 +14,11 @@ Logitheques
 Cet exemple utilise la logitheque Chrono
 
 Version originale : Thomas Ouellet Fredericks, 4 novembre 2012
-Derniere version :  Thomas Ouellet Fredericks, 23 septembre 2014
+Derniere version :  Thomas Ouellet Fredericks, 6 mai 2015
 */
 
-// INCLUDE CHRONO LIBRARY
-// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
-// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
-#include <Chrono.h>
+// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+#include <Chrono.h> 
 
 Chrono envoiMessage;
 
@@ -32,7 +30,7 @@ void setup() {
 }
 
 void loop() {
-          if (envoiMessage.passed(20) ) { // elapsed(20) returns true if 20 ms have passed.
+          if (envoiMessage.hasPassed(20) ) { // returns true if 20 ms have passed.
                 envoiMessage.restart();  // restart the Chrono 
                   Serial.print("ms "); // "ms" suivi d'un espace
                   Serial.print( millis() ); // la valeur de la mesure

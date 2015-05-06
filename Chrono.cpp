@@ -15,7 +15,7 @@ Chrono::Chrono()
 }
 
 
-bool Chrono::passed(unsigned long interval)
+bool Chrono::hasPassed(unsigned long interval)
 {
    
   if ( (millis() - previousMillis) >= interval ) return true;

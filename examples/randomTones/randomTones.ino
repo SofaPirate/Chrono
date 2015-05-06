@@ -1,7 +1,5 @@
-// INCLUDE CHRONO LIBRARY
-// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
-// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
-#include <Chrono.h>
+// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+#include <Chrono.h> 
 
 // Brancher un haut-parleur piezo entre la broche 9 et le GND :
 #define TONE_PIN 13
@@ -18,7 +16,7 @@ void setup() {
 
 void loop() {
   
-  if ( updateTone.passed(100) ) {
+  if ( updateTone.hasPassed(100) ) {
 	updateTone.restart();
 	
      int hz = random(30,11000);

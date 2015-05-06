@@ -2,11 +2,8 @@
 // abd will blink output 9 every 125 ms
 
 
-// INCLUDE CHRONO LIBRARY
-#include <Chrono.h>
-// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
-// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
-
+// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+#include <Chrono.h> 
 
 #define LED_A 13 // Define a LED pin
 #define LED_B 9 // Define another LED pin
@@ -34,7 +31,7 @@ void setup()
 void loop()
 {
   // Use Chrono as a metronome with an interval of 250 ms : 
-  if ( chronoA.passed(250) ) {
+  if ( chronoA.hasPassed(250) ) {
     chronoA.restart();
     if (stateA==HIGH)  { 
       stateA=LOW;
@@ -45,7 +42,7 @@ void loop()
   }
   
   // Use Chrono as a metronome with an interval of 125 ms : 
-   if ( chronoB.passed(125) ) { 
+   if ( chronoB.hasPassed(125) ) { 
     chronoB.restart();
     if (stateB==HIGH)  { 
       stateB=LOW;

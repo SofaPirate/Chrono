@@ -12,9 +12,9 @@ Chrono	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-repeat	KEYWORD2
-repeatFixed	KEYWORD2
-start KEYWORD2
+hasPassed	KEYWORD2
+elapsed	KEYWORD2
+restart	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
