@@ -5,7 +5,9 @@ by Sofian Audry and Thomas Ouellet Fredericks
 Chronometer/stopwatch library that counts the time passed since started.
 
 ## Repository
+
 http://github.com/thomasfredericks/Chrono
+
 Download the latest version here : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
 
 ## Installation
