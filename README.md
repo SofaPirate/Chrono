@@ -192,3 +192,20 @@ myChrono.delay(1000);
 ```
 
 ## LightChrono
+
+The Chrono library provides a lightweight version of the Chrono class called LightChrono, with a lower memory trace but less functionalities.
+LightChrono works in milliseconds only and provides only the following methods :
+* elapsed()
+* hasPassed(timeOut)
+* hasPassed(timeOut, restartIfPassed)
+* restart() (no offset option)
+
+To use the LightChrono class instead of the Chrono class just include the LightChrono.h file and declare LightChrono objects :
+
+```arduino
+#include <LightChrono.h> 
+
+LightChrono myChrono;
+
+```
+
