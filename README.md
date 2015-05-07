@@ -1,22 +1,18 @@
-CHRONO
-=====================
+# CHRONO
 Chrono library for Arduino or Wiring
 by Sofian Audry and Thomas Ouellet Fredericks
 
 Chronometer/stopwatch library that counts the time passed since started.
 
-Repository
-=====================
+## Repository
 http://github.com/thomasfredericks/Chrono
 Download the latest version here : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
 
-Installation
-=====================
+## Installation
 Copy the Chrono folder to your Arduino libraries.
 
 
-Basic Example
-=====================
+## Basic Example
 ```arduino
 // INCLUDE CHRONO LIBRARY
 // Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
@@ -42,18 +38,18 @@ void loop() {
 
 ```
 
+## Usage
 
-Include the library
-=====================
+### Include the library
+
 ```arduino
 // INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
 #include <Chrono.h> 
 
 ```
 
-Create an instance
-=====================
-Once a Chrono is created, it starts counting (in milliseconds).
+### Create an instance
+Once a Chrono is created, it starts counting (in milliseconds by default).
 
 ```arduino
 // CREATE A CHRONO INSTANCE :
@@ -61,6 +57,7 @@ Chrono myChrono;
 
 ```
 
+#### Time units
 You can create a Chrono that counts in microseconds or seconds:
 ```arduino
 Chrono myChronoMicros(SuperChrono::MICROS);
@@ -77,8 +74,7 @@ Chrono myChronoMicros(mySpecialTimeFunction);
 ```
 
 
-elapsed()
-=====================
+### elapsed()
 
 Returns the elasped milliseconds.
 
@@ -88,9 +84,7 @@ unsigned long elapsed = myChrono.elapsed();
 
 ```
 
-restart()
-restart(offset)
-=====================
+### restart()
 
 Starts/restarts the chronometer.
 
@@ -100,8 +94,17 @@ myChrono.restart();
 
 ```
 
-stop()
-=====================
+#### restart(offset)
+
+You can alternatively start the chronometer with a time offset:
+```arduino
+// RESTART THE CHRONOMETER WITH AN OFFSET OF 1000 TIME UNITS :
+myChrono.restart(1000);
+
+```
+
+
+### stop()
 
 Stops/pauses the chronometer.
 
@@ -111,8 +114,7 @@ mySuperChrono.stop();
 
 ```
 
-resume()
-=====================
+### resume()
 
 Resumes the chronometer.
 
@@ -123,8 +125,7 @@ mySuperChrono.stop();
 ```
 
 
-hasPassed(timeout)
-hasPassed(timeout,restartIfPassed)
+### hasPassed(timeout)
 =====================
 Returns true if the chronometer passed the timeout.
 ```arduino
@@ -143,7 +144,9 @@ if ( myChrono.hasPassed(200) ) {
 
 ```
 
-This can be written more simply by setting the restartIfPassed argument to true, which will 
+#### hasPassed(timeout,restartIfPassed)
+
+The metronome code above can be written more simply by setting the restartIfPassed argument to true, which will 
 automatically restart the chronometer if timeout is passed :
 ```arduino
 // when passed 200 time units, the chrono will restart and the function will return true
@@ -154,10 +157,9 @@ if ( myChrono.hasPassed(200, true) ) {
 ```
 
 
-add(time)
-=====================
+### add(time)
 
-Adds some time to the chronometer.
+Immediately adds some time to the chronometer.
 
 ```arduino
 // ADDS 500 TIME UNITS TO THE CHRONOMETER :
@@ -165,8 +167,7 @@ myChrono.add(500);
 
 ```
 
-isRunning()
-=====================
+### isRunning()
 
 Returns true if the chronometer is currently running.
 
@@ -180,8 +181,7 @@ Serial.println( myChrono.isRunning() ); // will print "1" (true)
 
 ```
 
-delay(time)
-=====================
+### delay(time)
 
 Waits for some time (in the time unit of the chronometer).
 
@@ -190,3 +190,5 @@ Waits for some time (in the time unit of the chronometer).
 myChrono.delay(1000);
 
 ```
+
+## LightChrono
