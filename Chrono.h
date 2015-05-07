@@ -1,65 +1,104 @@
 /*
  * Chronometer class
- * Simple chronometer/stopwatch class that counts the time passed since started.
+ * Chronometer/stopwatch class that counts the time passed since started.
  * 
  * (c) 2015 Sofian Audry        :: info(@)sofianaudry(.)com
- * (c) 2015 Thomas O Fredericks :: tof(@)t-o-f(.)info
+ * (c)      Thomas O Fredericks :: tof(@)t-o-f(.)info
+ * (c)      Rob Tillaart
  *
- * Partly based on code by Sofian Audry:
- * https://github.com/sofian/libinteract/blob/master/trunk/arduino/Timer.h
+ * Based on code by Sofian Audry:
+ * https://github.com/sofian/libinteract/blob/master/trunk/arduino/SuperTimer.h
  * http://accrochages.drone.ws/node/90
  * 
- * The MIT License (MIT)
+ * Rob Tillaart StopWatch library:
+ * http://playground.arduino.cc/Code/StopWatchClass
  * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #ifndef CHRONO_H_
 #define CHRONO_H_
 
 /*
  * Example code:
- *
- * Chrono myChrono; // chronometer automatically starts at creation
+ * 
+ * Chrono chrono;
  * // ...
- * myChrono.restart(); // you can start (restart) it later
- * while (!myChrono.hasPassed(2000)) // a 2000 ms loop
- *  Serial.println(myChrono.elapsed()); // current time
- *   // do something
- * // ...
+ * chrono.restart(); // start/restart
+ * // do some stuff
+ * chrono.pause();
+ * // do more stuff
+ * chrono.resume();
+ * // do some "out of the clock" processing, such as shutting the power down using
+ * // the watchdog for 8000 ms
+ * chrono.add(8000); // add the time that wasn't accounted for
  */
 class Chrono
 {
-private:
-  unsigned long _startTime; // keeps track of start time (in milliseconds)
+public:
+  // Different sorts of ways to get time.
+  enum Resolution { MILLIS, MICROS, SECONDS };
+
+public:
+  // Keeps track of start time (in milliseconds).
+  unsigned long _startTime;
+
+  // Time offset.
+  unsigned long _offset;
+
+  // Time function.
+  unsigned long (*_getTime)(void);
+
+  // Tells if the chrono is currently running or not.
+  bool _isRunning;
 
 public:
   /// Constructor.
-  Chrono();
+  Chrono(Resolution resolution = MILLIS);
 
-  // Starts/restarts the chronometer.
-  void restart();
+  /**
+   * Custom time method constructor. Optional parameter can be used to prevent 
+   * the chronometer from starting at construction since some functions might
+   * trigger errors when called statically.
+   */
+  Chrono(unsigned long (*getTime_)(void), bool startNow=true);
+  
+  // Starts/restarts the chronometer with optional starting offset.
+  void restart(unsigned long offset = 0);
+  
+  // Stops/pauses the chronometer.
+  void stop();
 
+  // Resumes the chronometer.
+  void resume();
+
+  /// Adds some time to the chronometer.
+  void add(unsigned long t);
+  
   /// Returns the elapsed time since start (in milliseconds).
   unsigned long elapsed() const;
 
   /// Returns true iff elapsed time has passed given timeout.
-  bool hasPassed(unsigned long timeout) const;
+  bool passed(unsigned long timeout) const;
+
+  /// Returns true iff the chronometer is currently running.
+  bool isRunning() const;
+
+  // Blocks execution for a given time.
+  void delay(unsigned long time);
+
+  /// Returns the time in seconds (millis() / 1000).
+  static unsigned long seconds();
 };
 
 #endif
