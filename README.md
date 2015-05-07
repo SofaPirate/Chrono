@@ -1,10 +1,9 @@
 CHRONO
 =====================
 Chrono library for Arduino or Wiring
-by Thomas Ouellet Fredericks and Sofian Audry
+by Sofian Audry and Thomas Ouellet Fredericks
 
-Simple chronometer/stopwatch class that counts the time passed since started.
-For a chronometer with more advanced features (pause, resume, add time, multiple time units support, etc) please use the [SuperChrono](http://github.com/sofian/SuperChrono) library.
+Chronometer/stopwatch library that counts the time passed since started.
 
 Repository
 =====================
@@ -33,11 +32,11 @@ void setup() {
 }
 
 void loop() {
-  // Check whether the chronometer has reached 1000 ms
+  // Check whether the chronometer has reached 1000 time units.
   if (myChrono.hasPassed(1000)) {
     // Do something here...
-    // Restart the chrono.
-    myChrono.start();
+    // Restart the chronometer.
+    myChrono.restart();
   }
 }
 
@@ -62,6 +61,22 @@ Chrono myChrono;
 
 ```
 
+You can create a Chrono that counts in microseconds or seconds:
+```arduino
+Chrono myChronoMicros(SuperChrono::MICROS);
+Chrono myChronoSeconds(SuperChrono::SECONDS);
+
+```
+
+Alternatively you can create a Chrono with a custom time function:
+```arduino
+unsigned long mySpecialTimeFunction();
+
+Chrono myChronoMicros(mySpecialTimeFunction);
+
+```
+
+
 elapsed()
 =====================
 
@@ -74,9 +89,10 @@ unsigned long elapsed = myChrono.elapsed();
 ```
 
 restart()
+restart(offset)
 =====================
 
-Restarts the chronometer.
+Starts/restarts the chronometer.
 
 ```arduino
 // RESTART THE CHRONOMETER :
@@ -84,12 +100,35 @@ myChrono.restart();
 
 ```
 
+stop()
+=====================
+
+Stops/pauses the chronometer.
+
+```arduino
+// STOPS/PAUSES THE CHRONOMETER :
+mySuperChrono.stop();
+
+```
+
+resume()
+=====================
+
+Resumes the chronometer.
+
+```arduino
+// STOPS/PAUSES THE CHRONOMETER :
+mySuperChrono.stop();
+
+```
+
+
 hasPassed(timeout)
 =====================
-Returns true if the chronometer passed the timeout in milliseconds.
+Returns true if the chronometer passed the timeout.
 ```arduino
 if ( myChrono.hasPassed(500) ) {
-	// DO SOMETHING IF 500 MS HAVE PASSED.
+	// DO SOMETHING IF 500 TIME UNITS HAVE PASSED.
 }
 
 ```
@@ -98,7 +137,44 @@ Combined with restart() you can have a metronome :
 ```arduino
 if ( myChrono.hasPassed(200) ) {
      myChrono.restart();
-	// DO SOMETHING EVERY 200 MS.
+	// DO SOMETHING EVERY 200 TIME UNITS.
 }
+
+```
+
+add(time)
+=====================
+
+Adds some time to the chronometer.
+
+```arduino
+// ADDS 500 TIME UNITS TO THE CHRONOMETER :
+myChrono.add(500);
+
+```
+
+isRunning()
+=====================
+
+Returns true if the chronometer is currently running.
+
+```arduino
+myChrono.restart();
+Serial.println( myChrono.isRunning() ); // will print "1" (true)
+myChrono.stop();
+Serial.println( myChrono.isRunning() ); // will print "0" (false)
+myChrono.resume();
+Serial.println( myChrono.isRunning() ); // will print "1" (true)
+
+```
+
+delay(time)
+=====================
+
+Waits for some time (in the time unit of the chronometer).
+
+```arduino
+// WAIT FOR 1000 TIME UNITS :
+myChrono.delay(1000);
 
 ```
