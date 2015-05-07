@@ -1,45 +1,50 @@
 CHRONO
 =====================
 Chrono library for Arduino or Wiring
-by Thomas Ouellet Fredericks
+by Thomas Ouellet Fredericks and Sofian Audry
 
-This library facilitates the timing of events.
+Simple chronometer/stopwatch class that counts the time passed since started.
+For a chronometer with more advanced features (pause, resume, add time, multiple time units support, etc) please use the [SuperChrono](http://github.com/sofian/SuperChrono) library.
 
-
-REPOSITORY
+Repository
 =====================
 http://github.com/thomasfredericks/Chrono
+Download the latest version here : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
 
-
-INSTALLATION
+Installation
 =====================
 Copy the Chrono folder to your Arduino libraries.
 
 
-BASIC EXAMPLE
+Basic Example
 =====================
 ```arduino
-// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+// INCLUDE CHRONO LIBRARY
+// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
+// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
 #include <Chrono.h>
 
 // Instanciate a Chrono object.
 Chrono myChrono; 
 
 void setup() {
+  // Start the chronometer on setup.
+  myChrono.start();
 }
 
 void loop() {
-  // Use Chrono as a metronome with an interval of 1000 ms : 
-  if (myChrono.hasPassed(1000) ) { // returns 1 if 1000 ms have passed.
-     myChrono.restart(); // restart the Chrono
+  // Check whether the chronometer has reached 1000 ms
+  if (myChrono.hasPassed(1000)) {
     // Do something here...
+    // Restart the chrono.
+    myChrono.start();
   }
 }
 
 ```
 
 
-INCLUDE THE LIBRARY
+Include the library
 =====================
 ```arduino
 // INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
@@ -47,7 +52,7 @@ INCLUDE THE LIBRARY
 
 ```
 
-CREATE AN INSTANCE
+Create an instance
 =====================
 Once a Chrono is created, it starts counting (in milliseconds).
 
@@ -79,9 +84,9 @@ myChrono.restart();
 
 ```
 
-hasPassed(interval)
+hasPassed(timeout)
 =====================
-Returns true if the chronometer passed the interval in milliseconds.
+Returns true if the chronometer passed the timeout in milliseconds.
 ```arduino
 if ( myChrono.hasPassed(500) ) {
 	// DO SOMETHING IF 500 MS HAVE PASSED.

@@ -1,7 +1,34 @@
-/*  * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-By Thomas O Fredericks (tof@t-o-f.info)
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
+/*
+ * Chronometer class
+ * Simple chronometer/stopwatch class that counts the time passed since started.
+ * 
+ * (c) 2015 Sofian Audry        :: info(@)sofianaudry(.)com
+ * (c) 2015 Thomas O Fredericks :: tof(@)t-o-f(.)info
+ *
+ * Partly based on code by Sofian Audry:
+ * https://github.com/sofian/libinteract/blob/master/trunk/arduino/Timer.h
+ * http://accrochages.drone.ws/node/90
+ * 
+ * The MIT License (MIT)
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
 #else
@@ -11,65 +38,21 @@ By Thomas O Fredericks (tof@t-o-f.info)
 
 Chrono::Chrono()
 {
-		
+  restart();
 }
-
-
-bool Chrono::hasPassed(unsigned long interval)
-{
-   
-  if ( (millis() - previousMillis) >= interval ) return true;
-  
-  return false;
-  
-}
-
-unsigned long Chrono::elapsed() {
-	return millis()-previousMillis;
-}
-
-
 
 void Chrono::restart() 
 {
-  this->previousMillis = millis();
+  _startTime = millis();
 }
 
-/*
+unsigned long Chrono::elapsed() const {
+	return (millis() - _startTime);
+}
 
-uint8_t Chrono::qmetro(unsigned long interval)
+
+bool Chrono::hasPassed(unsigned long timeout) const
 {
-  unsigned long now = millis();
-   
-  if ( interval == 0 || ((now - previousMillis) >= interval) ) {
-	
-	previousMillis = now;
-	
-    return 1;
-  }
-  
-  return 0;
+  return (elapsed() >= timeout);
 }
 
-uint8_t Chrono::metro(unsigned long interval)
-{
-  unsigned long now = millis();
-  
-  if ( interval == 0 ){
-    previousMillis = now;
-	return 1;
-  }
- 
-  if ( (now - previousMillis) >= interval) {
-	previousMillis += interval ; 
-    return 1;
-  }
-  
-  return 0;
-}
-
-}
-
-
-
-*/
