@@ -124,6 +124,7 @@ mySuperChrono.stop();
 
 
 hasPassed(timeout)
+hasPassed(timeout,restartIfPassed)
 =====================
 Returns true if the chronometer passed the timeout.
 ```arduino
@@ -141,6 +142,17 @@ if ( myChrono.hasPassed(200) ) {
 }
 
 ```
+
+This can be written more simply by setting the restartIfPassed argument to true, which will 
+automatically restart the chronometer if timeout is passed :
+```arduino
+// when passed 200 time units, the chrono will restart and the function will return true
+if ( myChrono.hasPassed(200, true) ) { 
+	// DO SOMETHING EVERY 200 TIME UNITS.
+}
+
+```
+
 
 add(time)
 =====================
