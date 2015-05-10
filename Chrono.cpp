@@ -86,7 +86,7 @@ bool Chrono::isRunning() const {
 
 void Chrono::delay(unsigned long time) {
   time += elapsed();
-  while (!passed(time));
+  while (!hasPassed(time));
 }
 
 unsigned long Chrono::elapsed() const {
