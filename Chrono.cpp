@@ -93,9 +93,13 @@ unsigned long Chrono::elapsed() const {
   return _offset + (_isRunning ? (_getTime() - _startTime) : 0);
 }
 
-bool Chrono::hasPassed(unsigned long timeout, bool restartIfPassed) const
+bool Chrono::hasPassed(unsigned long timeout) const
 {
-  if (elapsed() >= timeout) {
+  return (elapsed() >= timeout);
+}
+
+bool Chrono::hasPassed(unsigned long timeout, bool restartIfPassed) {
+  if (hasPassed(timeout)) {
     if (restartIfPassed)
       restart();
     return true;

@@ -89,7 +89,8 @@ public:
   unsigned long elapsed() const;
 
   /// Returns true iff elapsed time has passed given timeout.
-  bool hasPassed(unsigned long timeout, bool restartIfPassed=false) const;
+  bool hasPassed(unsigned long timeout) const;
+  bool hasPassed(unsigned long timeout, bool restartIfPassed);
 
   /// Returns true iff the chronometer is currently running.
   bool isRunning() const;
