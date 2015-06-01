@@ -17,8 +17,7 @@ Copy the Chrono folder to your Arduino libraries.
 ## Basic Example
 ```arduino
 // INCLUDE CHRONO LIBRARY
-// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
-// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
+// Download : https://github.com/thomasfredericks/Chrono/archive/master.zip
 #include <Chrono.h>
 
 // Instanciate a Chrono object.
@@ -78,7 +77,7 @@ Chrono myChronoMicros(mySpecialTimeFunction);
 
 ### elapsed()
 
-Returns the elasped milliseconds.
+Returns the elapsed milliseconds.
 
 ```arduino
 // GET ELAPSED MILLISECONDS :
