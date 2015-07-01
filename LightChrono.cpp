@@ -46,7 +46,17 @@ unsigned long LightChrono::elapsed() const {
 	return (millis() - _startTime);
 }
 
-bool Chrono::hasPassed(unsigned long timeout, bool restartIfPassed) const
+bool LightChrono::hasPassed(unsigned long timeout)
+{
+  if (elapsed() >= timeout) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+bool LightChrono::hasPassed(unsigned long timeout, bool restartIfPassed)
 {
   if (elapsed() >= timeout) {
     if (restartIfPassed)

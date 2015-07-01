@@ -86,14 +86,24 @@ bool Chrono::isRunning() const {
 
 void Chrono::delay(unsigned long time) {
   time += elapsed();
-  while (!passed(time));
+  while (!hasPassed(time));
 }
 
 unsigned long Chrono::elapsed() const {
   return _offset + (_isRunning ? (_getTime() - _startTime) : 0);
 }
 
-bool Chrono::hasPassed(unsigned long timeout, bool restartIfPassed) const
+bool Chrono::hasPassed(unsigned long timeout) 
+{
+  if (elapsed() >= timeout) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+bool Chrono::hasPassed(unsigned long timeout, bool restartIfPassed) 
 {
   if (elapsed() >= timeout) {
     if (restartIfPassed)
