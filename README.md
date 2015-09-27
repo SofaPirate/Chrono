@@ -61,8 +61,8 @@ Chrono myChrono;
 #### Time units
 You can create a Chrono that counts in microseconds or seconds:
 ```arduino
-Chrono myChronoMicros(SuperChrono::MICROS);
-Chrono myChronoSeconds(SuperChrono::SECONDS);
+Chrono myChronoMicros(Chrono::MICROS);
+Chrono myChronoSeconds(Chrono::SECONDS);
 
 ```
 
@@ -111,7 +111,7 @@ Stops/pauses the chronometer.
 
 ```arduino
 // STOPS/PAUSES THE CHRONOMETER :
-mySuperChrono.stop();
+myChrono.stop();
 
 ```
 
@@ -121,7 +121,7 @@ Resumes the chronometer.
 
 ```arduino
 // STOPS/PAUSES THE CHRONOMETER :
-mySuperChrono.stop();
+myChrono.stop();
 
 ```
 

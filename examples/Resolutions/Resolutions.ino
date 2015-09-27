@@ -1,4 +1,4 @@
-#include <SuperChrono.h>
+#include <Chrono.h>
 
 // Custom time function (just returns the number of times loop() was called).
 unsigned long _loopCount = 0;
@@ -6,10 +6,10 @@ unsigned long loopTime() {
   return _loopCount;
 }
 
-SuperChrono millisChrono;
-SuperChrono microsChrono(SuperChrono::MICROS);
-SuperChrono secondsChrono(SuperChrono::SECONDS);
-SuperChrono loopChrono(loopTime);
+Chrono millisChrono;
+Chrono microsChrono(Chrono::MICROS);
+Chrono secondsChrono(Chrono::SECONDS);
+Chrono loopChrono(loopTime);
 
 void setup() {
   Serial.begin(57600);
