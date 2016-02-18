@@ -60,6 +60,10 @@ Chrono::Chrono(unsigned long (*getTime_)(void), bool startNow) : _getTime(getTim
   }
 }
 
+void Chrono::start(unsigned long offset) {
+  restart(offset);
+}
+
 void Chrono::restart(unsigned long offset) {
   _startTime = _getTime();
   _offset    = offset;

@@ -74,6 +74,7 @@ public:
   Chrono(unsigned long (*getTime_)(void), bool startNow=true);
   
   // Starts/restarts the chronometer with optional starting offset.
+  void start(unsigned long offset = 0);
   void restart(unsigned long offset = 0);
   
   // Stops/pauses the chronometer.
