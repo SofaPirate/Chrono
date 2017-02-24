@@ -127,7 +127,7 @@ myChrono.stop();
 
 
 ### hasPassed(timeout)
-=====================
+
 Returns true if the chronometer passed the timeout.
 ```arduino
 if ( myChrono.hasPassed(500) ) {
