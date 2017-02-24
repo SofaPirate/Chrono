@@ -17,8 +17,7 @@ Copy the Chrono folder to your Arduino libraries.
 ## Basic Example
 ```arduino
 // INCLUDE CHRONO LIBRARY
-// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
-// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
+// Download : https://github.com/thomasfredericks/Chrono/archive/master.zip
 #include <Chrono.h>
 
 // Instanciate a Chrono object.
@@ -62,8 +61,8 @@ Chrono myChrono;
 #### Time units
 You can create a Chrono that counts in microseconds or seconds:
 ```arduino
-Chrono myChronoMicros(SuperChrono::MICROS);
-Chrono myChronoSeconds(SuperChrono::SECONDS);
+Chrono myChronoMicros(Chrono::MICROS);
+Chrono myChronoSeconds(Chrono::SECONDS);
 
 ```
 
@@ -78,7 +77,7 @@ Chrono myChronoMicros(mySpecialTimeFunction);
 
 ### elapsed()
 
-Returns the elasped milliseconds.
+Returns the elapsed milliseconds.
 
 ```arduino
 // GET ELAPSED MILLISECONDS :
@@ -112,7 +111,7 @@ Stops/pauses the chronometer.
 
 ```arduino
 // STOPS/PAUSES THE CHRONOMETER :
-mySuperChrono.stop();
+myChrono.stop();
 
 ```
 
@@ -122,7 +121,7 @@ Resumes the chronometer.
 
 ```arduino
 // STOPS/PAUSES THE CHRONOMETER :
-mySuperChrono.stop();
+myChrono.stop();
 
 ```
 

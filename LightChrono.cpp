@@ -37,21 +37,23 @@ LightChrono::LightChrono()
   restart();
 }
 
+void LightChrono::start() { restart(); }
+
 void LightChrono::restart() 
 {
   _startTime = millis();
 }
 
-unsigned long LightChrono::elapsed() const {
+LightChrono::chrono_t LightChrono::elapsed() const {
 	return (millis() - _startTime);
 }
 
-bool LightChrono::hasPassed(unsigned long timeout) const
+bool LightChrono::hasPassed(LightChrono::chrono_t timeout) const
 {
   return (elapsed() >= timeout);
 }
 
-bool LightChrono::hasPassed(unsigned long timeout, bool restartIfPassed) {
+bool LightChrono::hasPassed(LightChrono::chrono_t timeout, bool restartIfPassed) {
   if (hasPassed(timeout)) {
     if (restartIfPassed)
       restart();

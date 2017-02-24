@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <title>Chrono: Chronometer/stopwatch library</title>
+    <link href="./style/style.css" media="screen" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="./style/prettify.js"></script>
+	<script type="text/javascript" src="./scripts/toc.js"></script>
+	<script type="text/javascript" src="./scripts/smoothscroll.js"></script>
+    <script>
+
+function handleLoad() {
+ prettyPrint();
+}
+
+</script></head>
+  <body onload="handleLoad();">
+  
+    <div id="container">
+        <img style="margin-left: auto;margin-right: auto;display:block" src="images/chrono.png">
+        <br>
+      <h1>Chrono</h1>
+      <p>Chronometer/stopwatch library that counts the time passed since started.</p>
+	  <div id="generated-toc" class="generate_from_h2"></div>
+      <h2>Get It!</h2>
+      <ul>
+        <li><a href="https://github.com/thomasfredericks/Chrono/archive/master.zip"><strong>Download the source</strong></a></li>
+        <li><a href="https://github.com/thomasfredericks/Chrono/">Chrono on Github </a></li>
+      </ul>
+	  
+      <h2>Adding Chrono</h2>
+	   <p>Copy the <span class="hilite">Chrono</span> folder to your Arduino or Wiring <span class="hilite">libraries</span> folder.      
+      <br>
+      <h2>Basic Example</h2>
+	  <pre class="prettyprint" ><code>
+// INCLUDE CHRONO LIBRARY
+// Documentation : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/blob/master/README.md
+// Download : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
+#include  &lt;Chrono.h&gt;
+
+// Instanciate a Chrono object.
+Chrono myChrono; 
+
+void setup() {
+  // Start the chronometer on setup.
+  myChrono.start();
+}
+
+void loop() {
+  // Check whether the chronometer has reached 1000 time units.
+  if (myChrono.hasPassed(1000)) {
+    // Do something here...
+    // Restart the chronometer.
+    myChrono.restart();
+  }
+}
+</code></pre>
+<h2>Basic Usage</h2>
+<h3> Include the library </h3>
+
+<pre class="prettyprint" ><code>// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+#include &lt;Chrono.h&gt;
+</code></pre>
+
+<h3> Create an instance </h3>
+Once a Chrono is created, it starts counting (in milliseconds by default).
+
+<pre class="prettyprint" ><code>
+// CREATE A CHRONO INSTANCE :
+Chrono myChrono;
+</code></pre>
+
+<h3> Basic Methods </h3>
+<table>
+            <tr>
+                <td class="first">elapsed()</td>
+                <td class="second"><span class="type number">unsigned long</span></td>
+                <td> Returns the elapsed time</td>
+            </tr>
+			<tr>
+                <td class="first">restart()</td>
+                <td class="second"><span class="type void">void</span></td>
+                <td>Starts/restarts the chronometer</td>
+            </tr>
+             <tr>
+                <td class="first">hasPassed( timeout )</td>
+                <td class="second"><span class="type boolean">bool</span></td>
+                <td>Returns true if the chronometer passed the timeout</td>
+            </tr>
+        </table>  
+
+<h2>Advanced Usage</h2>
+
+
+<h3> Time units </h3>
+You can create a Chrono that counts in microseconds or seconds:
+<pre class="prettyprint" ><code>Chrono myChronoMicros(Chrono::MICROS);
+</code></pre>
+<pre class="prettyprint" ><code>Chrono myChronoSeconds(Chrono::SECONDS);
+</code></pre>
+
+<h3> Custom time function </h3>
+Alternatively you can create a Chrono with a custom time function:
+<pre class="prettyprint" ><code>unsigned long mySpecialTimeFunction();
+
+Chrono myChronoMicros(mySpecialTimeFunction);
+</code></pre>
+
+<h3>Advanced Methods</h3>
+<table>
+            <tr>
+                <td class="first">restart( offset )</td>
+                <td class="second"><span class="type void">void</span></td>
+                <td>You can alternatively start(restart) the chronometer with a time offset</td>
+            </tr>
+			<tr>
+                <td class="first">stop()</td>
+                <td class="second"><span class="type void">void</span></td>
+                <td>Stops/pauses the chronometer</td>
+            </tr>
+             <tr>
+                <td class="first">resume( )</td>
+                <td class="second"><span class="type void">void</span></td>
+                <td>Resumes the chronometer</td>
+            </tr>
+			<tr>
+                <td class="first">hasPassed( timeout,restartIfPassed )</td>
+                <td class="second"><span class="type boolean">bool</span></td>
+                <td>If the chronometer passed the timeout, returns true and restarts the chronometer </td>
+            </tr>
+			<tr>
+                <td class="first">add( time )</td>
+                <td class="second"><span class="type void">void</span></td>
+                <td>Immediately adds some time to the chronometer</td>
+            </tr>
+			<tr>
+                <td class="first">isRunning( )</td>
+                <td class="second"><span class="type boolean">bool</span></td>
+                <td>Returns true if the chronometer is currently running</td>
+            </tr>
+			<tr>
+                <td class="first">delay( time )</td>
+                <td class="second"><span class="type void">void</span></td>
+                <td>Waits for some time (in the time unit of the chronometer)</td>
+            </tr>
+			
+        </table>  
+
+<br> 
+    </div>
+	<br>
+	<br>
+  </body>
+</html>

@@ -60,6 +60,10 @@ Chrono::Chrono(Chrono::chrono_t (*getTime_)(void), bool startNow) : _getTime(get
   }
 }
 
+void Chrono::start(Chrono::chrono_t offset) {
+  restart(offset);
+}
+
 void Chrono::restart(Chrono::chrono_t offset) {
   _startTime = _getTime();
   _offset    = offset;

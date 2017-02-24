@@ -81,6 +81,7 @@ public:
   Chrono(chrono_t (*getTime_)(void), bool startNow=true);
   
   // Starts/restarts the chronometer with optional starting offset.
+  void start(chrono_t offset = 0);
   void restart(chrono_t offset = 0);
   
   // Stops/pauses the chronometer.

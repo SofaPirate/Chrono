@@ -41,22 +41,30 @@
  */
 class LightChrono
 {
+public:
+#if defined(ARDUINO_ARC32_TOOLS)
+  typedef uint64_t chrono_t;
+#else
+  typedef unsigned long chrono_t;
+#endif
+
 private:
-  unsigned long _startTime; // keeps track of start time (in milliseconds)
+  chrono_t _startTime; // keeps track of start time (in milliseconds)
 
 public:
   /// Constructor.
   LightChrono();
 
   // Starts/restarts the chronometer.
+  void start();
   void restart();
 
   /// Returns the elapsed time since start (in milliseconds).
-  unsigned long elapsed() const;
+  chrono_t elapsed() const;
 
   /// Returns true iff elapsed time has passed given timeout.
-  bool hasPassed(unsigned long timeout) const;
-  bool hasPassed(unsigned long timeout, bool restartIfPassed);
+  bool hasPassed(chrono_t timeout) const;
+  bool hasPassed(chrono_t timeout, bool restartIfPassed);
 };
 
 #endif

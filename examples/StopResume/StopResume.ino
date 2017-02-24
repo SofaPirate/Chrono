@@ -1,6 +1,6 @@
-#include <SuperChrono.h>
+#include <Chrono.h>
 
-SuperChrono chrono;
+Chrono chrono;
 boolean passedFirstPost = false;
 
 void setup() {
