@@ -51,7 +51,7 @@ Chrono::Chrono(Resolution resolution) {
   restart();
 }
 
-Chrono::Chrono(unsigned long (*getTime_)(void), bool startNow) : _getTime(getTime_) {
+Chrono::Chrono(Chrono::chrono_t (*getTime_)(void), bool startNow) : _getTime(getTime_) {
   if (startNow)
     restart();
   else {
@@ -60,7 +60,7 @@ Chrono::Chrono(unsigned long (*getTime_)(void), bool startNow) : _getTime(getTim
   }
 }
 
-void Chrono::restart(unsigned long offset) {
+void Chrono::restart(Chrono::chrono_t offset) {
   _startTime = _getTime();
   _offset    = offset;
   _isRunning = true;
@@ -76,7 +76,7 @@ void Chrono::resume() {
   _isRunning = true;
 }
 
-void Chrono::add(unsigned long t) {
+void Chrono::add(Chrono::chrono_t t) {
   _offset += t;
 }
 
@@ -84,21 +84,21 @@ bool Chrono::isRunning() const {
   return (_isRunning);
 }
 
-void Chrono::delay(unsigned long time) {
+void Chrono::delay(Chrono::chrono_t time) {
   time += elapsed();
   while (!hasPassed(time));
 }
 
-unsigned long Chrono::elapsed() const {
+Chrono::chrono_t Chrono::elapsed() const {
   return _offset + (_isRunning ? (_getTime() - _startTime) : 0);
 }
 
-bool Chrono::hasPassed(unsigned long timeout) const
+bool Chrono::hasPassed(Chrono::chrono_t timeout) const
 {
   return (elapsed() >= timeout);
 }
 
-bool Chrono::hasPassed(unsigned long timeout, bool restartIfPassed) {
+bool Chrono::hasPassed(Chrono::chrono_t timeout, bool restartIfPassed) {
   if (hasPassed(timeout)) {
     if (restartIfPassed)
       restart();
@@ -109,7 +109,7 @@ bool Chrono::hasPassed(unsigned long timeout, bool restartIfPassed) {
   }
 }
 
-unsigned long Chrono::seconds() {
+Chrono::chrono_t Chrono::seconds() {
   return (millis()/1000);
 }
 

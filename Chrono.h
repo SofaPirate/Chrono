@@ -46,18 +46,25 @@
 class Chrono
 {
 public:
+
+#if defined(ARDUINO_ARC32_TOOLS)
+  typedef uint64_t chrono_t;
+#else
+  typedef unsigned long chrono_t;
+#endif
+
   // Different sorts of ways to get time.
   enum Resolution { MILLIS, MICROS, SECONDS };
 
 public:
-  // Keeps track of start time (in milliseconds).
-  unsigned long _startTime;
+  // Keeps track of start time (in chosen time unit).
+  chrono_t _startTime;
 
   // Time offset.
-  unsigned long _offset;
+  chrono_t long _offset;
 
   // Time function.
-  unsigned long (*_getTime)(void);
+  chrono_t (*_getTime)(void);
 
   // Tells if the chrono is currently running or not.
   bool _isRunning;
@@ -71,10 +78,10 @@ public:
    * the chronometer from starting at construction since some functions might
    * trigger errors when called statically.
    */
-  Chrono(unsigned long (*getTime_)(void), bool startNow=true);
+  Chrono(chrono_t (*getTime_)(void), bool startNow=true);
   
   // Starts/restarts the chronometer with optional starting offset.
-  void restart(unsigned long offset = 0);
+  void restart(chrono_t offset = 0);
   
   // Stops/pauses the chronometer.
   void stop();
@@ -83,23 +90,23 @@ public:
   void resume();
 
   /// Adds some time to the chronometer.
-  void add(unsigned long t);
+  void add(chrono_t t);
   
   /// Returns the elapsed time since start (in milliseconds).
-  unsigned long elapsed() const;
+  chrono_t elapsed() const;
 
   /// Returns true iff elapsed time has passed given timeout.
-  bool hasPassed(unsigned long timeout) const;
-  bool hasPassed(unsigned long timeout, bool restartIfPassed);
+  bool hasPassed(chrono_t timeout) const;
+  bool hasPassed(chrono_t timeout, bool restartIfPassed);
 
   /// Returns true iff the chronometer is currently running.
   bool isRunning() const;
 
   // Blocks execution for a given time.
-  void delay(unsigned long time);
+  void delay(chrono_t time);
 
   /// Returns the time in seconds (millis() / 1000).
-  static unsigned long seconds();
+  static chrono_t seconds();
 };
 
 #endif
