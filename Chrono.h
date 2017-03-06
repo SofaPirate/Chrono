@@ -33,9 +33,9 @@
  * Example code:
  * 
  * Chrono chrono;
- * // ...
- * chrono.restart(); // start/restart
  * // do some stuff
+ * chrono.restart(); // start/restart
+ * // do more stuff
  * chrono.pause();
  * // do more stuff
  * chrono.resume();
@@ -70,8 +70,14 @@ public:
   bool _isRunning;
 
 public:
-  /// Constructor.
-  Chrono(Resolution resolution = MILLIS);
+  /// Constructor. Parameter startNow can be set to false to prevent chronometer from starting up at construction.
+  Chrono(Resolution resolution = MILLIS, bool startNow=true);
+
+  /**
+   * Constructor. Parameter startNow can be set to false to prevent chronometer from starting up at construction.
+   * Uses milliseconds (ie. Chrono::MILLIS).
+   */
+  Chrono(bool startNow);
 
   /**
    * Custom time method constructor. Optional parameter can be used to prevent 
@@ -108,6 +114,9 @@ public:
 
   /// Returns the time in seconds (millis() / 1000).
   static chrono_t seconds();
+  
+private:
+  void _init(chrono_t (*getTime_)(void), bool startNow);
 };
 
 #endif

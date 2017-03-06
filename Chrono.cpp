@@ -33,7 +33,7 @@
 #endif
 #include "Chrono.h"
 
-Chrono::Chrono(Resolution resolution) {
+Chrono::Chrono(Resolution resolution, bool startNow) {
   // Assign appropriate time function.
   switch(resolution) {
     case SECONDS:
@@ -47,17 +47,15 @@ Chrono::Chrono(Resolution resolution) {
       _getTime = millis;
       break;
   }
-  // Start.
-  restart();
+  _init( (resolution == SECONDS ? seconds : (resolution == MICROS ? micros : millis) ), startNow);
+}
+
+Chrono::Chrono(bool startNow) {
+  _init(millis, startNow);
 }
 
 Chrono::Chrono(Chrono::chrono_t (*getTime_)(void), bool startNow) : _getTime(getTime_) {
-  if (startNow)
-    restart();
-  else {
-    _startTime = _offset = 0;
-    _isRunning = false;
-  }
+  _init(getTime_, startNow);
 }
 
 void Chrono::start(Chrono::chrono_t offset) {
@@ -116,6 +114,18 @@ bool Chrono::hasPassed(Chrono::chrono_t timeout, bool restartIfPassed) {
 Chrono::chrono_t Chrono::seconds() {
   return (millis()/1000);
 }
+
+void Chrono::_init(chrono_t (*getTime_)(void), bool startNow) {
+  _getTime = getTime_;
+  // Start.
+  if (startNow)
+    restart();
+  else {
+    _startTime = _offset = 0;
+    _isRunning = false;
+  }
+}
+
 
 
 
