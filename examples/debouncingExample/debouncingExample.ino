@@ -1,5 +1,5 @@
 
-// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+// INCLUDE CHRONO LIBRARY : http://github.com/SofaPirate/Chrono
 #include <Chrono.h> 
 
 #define BUTTON_PIN 2

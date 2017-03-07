@@ -6,9 +6,9 @@ Chronometer/stopwatch library that counts the time passed since started.
 
 ## Repository
 
-http://github.com/thomasfredericks/Chrono
+http://github.com/SofaPirate/Chrono
 
-Download the latest version here : https://github.com/thomasfredericks/Chrono-Arduino-Wiring/archive/master.zip
+Download the latest version here : https://github.com/SofaPirate/Chrono-Arduino-Wiring/archive/master.zip
 
 ## Installation
 Copy the Chrono folder to your Arduino libraries.
@@ -17,7 +17,7 @@ Copy the Chrono folder to your Arduino libraries.
 ## Basic Example
 ```arduino
 // INCLUDE CHRONO LIBRARY
-// Download : https://github.com/thomasfredericks/Chrono/archive/master.zip
+// Download : https://github.com/SofaPirate/Chrono/archive/master.zip
 #include <Chrono.h>
 
 // Instanciate a Chrono object.
@@ -44,7 +44,7 @@ void loop() {
 ### Include the library
 
 ```arduino
-// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+// INCLUDE CHRONO LIBRARY : http://github.com/SofaPirate/Chrono
 #include <Chrono.h> 
 
 ```

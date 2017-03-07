@@ -2,7 +2,7 @@
 // abd will blink output 9 every 125 ms
 
 
-// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+// INCLUDE CHRONO LIBRARY : http://github.com/SofaPirate/Chrono
 #include <Chrono.h> 
 
 #define LED_A 13 // Define a LED pin

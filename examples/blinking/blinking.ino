@@ -2,7 +2,7 @@
  This code will blink an LED attached to pin 13 on and off. 
  */
 
-// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+// INCLUDE CHRONO LIBRARY : http://github.com/SofaPirate/Chrono
 #include <Chrono.h> 
 
 #define LED 13 // Define the led's pin

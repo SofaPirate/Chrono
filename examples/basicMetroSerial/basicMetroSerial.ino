@@ -17,7 +17,7 @@ Version originale : Thomas Ouellet Fredericks, 4 novembre 2012
 Derniere version :  Thomas Ouellet Fredericks, 6 mai 2015
 */
 
-// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+// INCLUDE CHRONO LIBRARY : http://github.com/SofaPirate/Chrono
 #include <Chrono.h> 
 
 Chrono envoiMessage;
