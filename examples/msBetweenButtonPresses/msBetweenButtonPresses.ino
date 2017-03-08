@@ -2,7 +2,7 @@
 Cet exemple mesure le temps entre deux pressions sur un interrupteur.
 */
 
-// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+// INCLUDE CHRONO LIBRARY : http://github.com/SofaPirate/Chrono
 #include <Chrono.h> 
 
 // L'interrupteur est branché à la broche 3 avec un pull-up externe :

@@ -1,4 +1,4 @@
-// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+// INCLUDE CHRONO LIBRARY : http://github.com/SofaPirate/Chrono
 #include <Chrono.h> 
 
 // Brancher un haut-parleur piezo entre la broche 9 et le GND :
