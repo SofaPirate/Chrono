@@ -14,6 +14,7 @@ LightChrono	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
+start	KEYWORD2
 restart	KEYWORD2
 stop	KEYWORD2
 resume	KEYWORD2
