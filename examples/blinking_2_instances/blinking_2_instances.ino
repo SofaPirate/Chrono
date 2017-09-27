@@ -30,14 +30,14 @@ void setup()
 void loop()
 {
   // Use Chrono as a metronome with an interval of 250 ms: 
-  if ( chronoA.hasPassed(250) ) {
+  if ( chronoA.hasPassed(250) ) { // returns true if it passed 250 ms since it was started
     chronoA.restart(); // restart the crono so that it triggers again later
     ledStateA = !ledStateA; // !: toggle the state from 0 to 1 or from 1 to 0
     digitalWrite(ledPinA,ledStateA);
   }
   
   // Use Chrono as a metronome with an interval of 125 ms: 
-   if ( chronoB.hasPassed(125) ) { 
+   if ( chronoB.hasPassed(125) ) { // returns true if it passed 125 ms since it was started
     chronoB.restart(); // restart the crono so that it triggers again later
     ledStateB = !ledStateB; // !: toggle the state from 0 to 1 or from 1 to 0
     digitalWrite(ledPinB,ledStateB);
