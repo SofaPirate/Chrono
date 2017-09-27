@@ -110,7 +110,8 @@ generated_toc = {
     // make the basic elements of the TOC itself, ready to fill into
     
     // first, check if there's a cookie defined to save the state as open
-    status = generated_toc.readCookie("generated_toc_display");
+    
+    status = "open"; //status = generated_toc.readCookie("generated_toc_display");
     if (status && status == "open") {
       display_initially = "block";
       toggle_initially = "Hide table of contents";
@@ -133,12 +134,14 @@ generated_toc = {
     tocparent.appendChild(p);
     p = document.createElement('p');
     p.id = 'toggle-container'; 
+    /*
     a = document.createElement('a');
     a.id = 'generated_toc_d_toggle';
     a.appendChild(document.createTextNode(toggle_initially));
     p.appendChild(a);
     a.onclick = generated_toc.wrapOpenClose(a,cur_list_el);
     a.href = '#';
+    */
     tocparent.appendChild(p);
     tocparent.appendChild(cur_list_el);
     

@@ -29,7 +29,7 @@ function handleLoad() {
       </ul>
 	  
       <h2>Adding Chrono</h2>
-	   <p>Copy the <span class="hilite">Chrono</span> folder to your Arduino or Wiring <span class="hilite">libraries</span> folder.      
+	   <p>Copy the <span class="hilite">Chrono</span> folder to your Arduino or Wiring <span class="hilite">libraries</span> folder <b>or</b> download it with the Arduino library manager.      
       <br>
       <h2>Basic Example</h2>
 	  <pre class="prettyprint" ><code>
@@ -42,16 +42,15 @@ function handleLoad() {
 Chrono myChrono; 
 
 void setup() {
-  // Start the chronometer on setup.
-  myChrono.start();
+
 }
 
 void loop() {
   // Check whether the chronometer has reached 1000 time units.
   if (myChrono.hasPassed(1000)) {
+    myChrono.restart(); // Restart the chronometer.
+
     // Do something here...
-    // Restart the chronometer.
-    myChrono.restart();
   }
 }
 </code></pre>
