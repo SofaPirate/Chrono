@@ -88,6 +88,102 @@ Chrono myChrono;
             </tr>
         </table>  
 
+<h2>Example: Blinking the debug LED</h2>
+
+<pre class="prettyprint" ><code>
+/*
+ This code will toggle pin 13 on and off every second (1000 ms).
+ This should be the debug LED's pin. So the debug LED should
+ blink every second.
+ */
+
+// INCLUDE CHRONO LIBRARY : http://github.com/SofaPirate/Chrono
+#include <Chrono.h> 
+
+// Set the led's pin
+int ledPin =  13; 
+
+//Create a variable to hold the led's state
+int ledState = HIGH;
+
+// Instanciate a Chrono object.
+Chrono ledChrono; 
+
+void setup()
+{
+  pinMode(ledPin,OUTPUT);
+  digitalWrite(ledPin,ledState);
+}
+
+void loop()
+{
+
+  if (ledChrono.hasPassed(1000) ) { // returns true if it passed 1000 ms since it was started
+    ledChrono.restart();  // restart the crono so that it triggers again later
+    
+    // toggle the stored state
+    if (ledState==HIGH)  ledState=LOW;
+    else ledState=HIGH;
+    
+    // write the state to the pin
+    digitalWrite(ledPin,ledState);
+  }
+}
+</code></pre>
+
+<h2>Example: Blinking 2 LEDS</h2>
+<img src="images/LED_on_pin_9.png">
+<pre class="prettyprint" ><code>
+// This code will toggle output 13 every 250 ms
+// and will toggle output 9 every 125 ms
+
+
+// INCLUDE CHRONO LIBRARY : http://github.com/SofaPirate/Chrono
+#include <Chrono.h> 
+
+// Create variables for the LED pins
+int ledPinA =  13;
+int ledPinB =  9;
+
+// Create variables to hold the LED states
+int ledStateA = HIGH;
+int ledStateB = HIGH;
+
+// Instantiate two Chronos
+Chrono chronoA; 
+Chrono chronoB; 
+
+void setup()
+{
+  pinMode(ledPinA,OUTPUT);
+  digitalWrite(ledPinA,ledStateA);
+  
+   pinMode(ledPinB,OUTPUT);
+  digitalWrite(ledPinB,ledStateB);
+  
+}
+
+void loop()
+{
+  // Use Chrono as a metronome with an interval of 250 ms: 
+  if ( chronoA.hasPassed(250) ) { // returns true if it passed 250 ms since it was started
+    chronoA.restart(); // restart the crono so that it triggers again later
+    ledStateA = !ledStateA; // !: toggle the state from 0 to 1 or from 1 to 0
+    digitalWrite(ledPinA,ledStateA);
+  }
+  
+  // Use Chrono as a metronome with an interval of 125 ms: 
+   if ( chronoB.hasPassed(125) ) { // returns true if it passed 125 ms since it was started
+    chronoB.restart(); // restart the crono so that it triggers again later
+    ledStateB = !ledStateB; // !: toggle the state from 0 to 1 or from 1 to 0
+    digitalWrite(ledPinB,ledStateB);
+  }
+  
+  
+}
+</code></pre>
+
+
 <h2>Advanced Usage</h2>
 
 
