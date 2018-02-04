@@ -69,8 +69,10 @@ void Chrono::restart(Chrono::chrono_t offset) {
 }
 
 void Chrono::stop() {
-  _offset    = elapsed(); // save currently elapsed time
-  _isRunning = false;
+  if (_isRunning) { // can only stop if was running
+    _offset    = elapsed(); // save currently elapsed time
+    _isRunning = false;
+  }
 }
   
 void Chrono::resume() {
