@@ -74,8 +74,10 @@ void Chrono::stop() {
 }
   
 void Chrono::resume() {
-  _startTime = _getTime();
-  _isRunning = true;
+  if (!_isRunning) { // can only resume if was stopped
+    _startTime = _getTime();
+    _isRunning = true;
+  }
 }
 
 void Chrono::add(Chrono::chrono_t t) {
