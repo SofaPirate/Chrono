@@ -61,7 +61,7 @@ public:
   chrono_t _startTime;
 
   // Time offset.
-  chrono_t long _offset;
+  chrono_t _offset;
 
   // Time function.
   chrono_t (*_getTime)(void);
