@@ -13,4 +13,4 @@ Chronometer/stopwatch library that counts the time passed since started.
 
 See the included "docs" folder or visit http://sofapirate.github.io/Chrono/
 
-
+[![arduino-library-badge](http://www.ardu-badge.com/badge/Chrono.svg)](http://www.ardu-badge.com/Chrono)
