@@ -11,7 +11,7 @@ void setup() {
 }
 
 void loop() {
-  if (!passedFirstPost && chrono.passed(5000)) {
+  if (!passedFirstPost && chrono.hasPassed(5000)) {
     Serial.println("Stop 5 sec");
     chrono.stop();
     printChrono();
@@ -24,7 +24,7 @@ void loop() {
     printChrono();
     passedFirstPost = true;
   }
-  else if (chrono.passed(10000)) {
+  else if (chrono.hasPassed(10000)) {
     Serial.println("Stop 10 sec");
     chrono.stop();
     printChrono();

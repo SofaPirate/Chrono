@@ -17,7 +17,7 @@ void setup() {
 
 void loop() {
   // Output every second.
-  if (secondsChrono.passed(1)) {
+  if (secondsChrono.hasPassed(1)) {
     Serial.println("PING!");
     Serial.print("Millis chrono: "); Serial.println(millisChrono.elapsed());
     Serial.print("Micros chrono: "); Serial.println(microsChrono.elapsed());
