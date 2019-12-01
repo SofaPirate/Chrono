@@ -6,20 +6,22 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-Chrono KEYWORD1
+Chrono	KEYWORD1
 SuperChrono	KEYWORD1
+LightChrono	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-restart KEYWORD2
-stop KEYWORD2
-resume KEYWORD2
-add KEYWORD2
-running KEYWORD2
+start	KEYWORD2
+restart	KEYWORD2
+stop	KEYWORD2
+resume	KEYWORD2
+add	KEYWORD2
+running	KEYWORD2
 elapsed	KEYWORD2
-hasPassed KEYWORD2
+hasPassed	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)

@@ -1,35 +1,39 @@
 /*
- This code will blink an LED attached to pin 13 on and off. 
+ This code will toggle pin 13 on and off every second (1000 ms).
+ This should be the debug LED's pin. So the debug LED should
+ blink every second.
  */
 
-// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+// INCLUDE CHRONO LIBRARY : http://github.com/SofaPirate/Chrono
 #include <Chrono.h> 
 
-#define LED 13 // Define the led's pin
+// Set the led's pin
+int ledPin =  13; 
 
-//Create a variable to hold theled's current state
-int state = HIGH;
+//Create a variable to hold the led's state
+int ledState = HIGH;
 
 // Instanciate a Chrono object.
-Chrono ledMetro; 
+Chrono ledChrono; 
 
 void setup()
 {
-  pinMode(LED,OUTPUT);
-  digitalWrite(LED,state);
+  pinMode(ledPin,OUTPUT);
+  digitalWrite(ledPin,ledState);
 }
 
 void loop()
 {
 
-
-  if (ledMetro.hasPassed(20) ) { // returns true if 20 ms have passed.
-    ledMetro.restart();  // restart the Chrono 
+  if (ledChrono.hasPassed(1000) ) { // returns true if it passed 1000 ms since it was started
+    ledChrono.restart();  // restart the crono so that it triggers again later
     
-    if (state==HIGH)  state=LOW;
-    else state=HIGH;
-
-    digitalWrite(LED,state);
+    // toggle the stored state
+    if (ledState==HIGH)  ledState=LOW;
+    else ledState=HIGH;
+    
+    // write the state to the pin
+    digitalWrite(ledPin,ledState);
   }
 }
 

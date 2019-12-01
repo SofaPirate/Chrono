@@ -1,4 +1,4 @@
-// INCLUDE CHRONO LIBRARY : http://github.com/thomasfredericks/Chrono
+// INCLUDE CHRONO LIBRARY : http://github.com/SofaPirate/Chrono
 #include <Chrono.h> 
 
 // Instanciate a Chrono object.
