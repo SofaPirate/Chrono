@@ -96,7 +96,12 @@ void Chrono::delay(Chrono::chrono_t time) {
 }
 
 Chrono::chrono_t Chrono::elapsed() const {
-  return _offset + (_isRunning ? (_getTime() - _startTime) : 0);
+    if( _isRunning )
+    {
+        return _offset + (  (_getTime() >= _startTime)  ?
+                            ( _getTime() - _startTime ) : ( _getTime() + ( OVERFLOWNUMBER - _startTime ) ) );
+    }
+    else {return (_offset + 0); }
 }
 
 bool Chrono::hasPassed(Chrono::chrono_t timeout) const
