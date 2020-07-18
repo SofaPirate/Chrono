@@ -59,6 +59,7 @@ public:
 public:
   // Keeps track of start time (in chosen time unit).
   chrono_t _startTime;
+  const unsigned long OVERFLOWNUMBER = ULONG_MAX;
 
   // Time offset.
   chrono_t long _offset;
