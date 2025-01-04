@@ -33,6 +33,29 @@
 #endif
 #include "Chrono.h"
 
+#if defined(ARDUINO_ARC32_TOOLS)
+  #define CHRONO_T_MAX UINT64_MAX
+#else
+  #define CHRONO_T_MAX UINT32_MAX
+#endif
+
+// Safe addition (prevents overflows and underflows).
+Chrono::chrono_t safeAdd(Chrono::chrono_t a, Chrono::signed_chrono_t b) {
+  if (b > 0) {
+    // Overflow.
+    if ((Chrono::chrono_t)b > CHRONO_T_MAX - a)
+      return CHRONO_T_MAX;
+  }
+
+  else {
+    // Underflow.
+    if ((Chrono::chrono_t)(-b) > a)
+      return 0;
+  }
+  // Default.
+  return a + b;
+}
+
 Chrono::Chrono(Resolution resolution, bool startNow) {
   // Assign appropriate time function.
   switch(resolution) {
@@ -82,8 +105,8 @@ void Chrono::resume() {
   }
 }
 
-void Chrono::add(Chrono::chrono_t t) {
-  _offset += t;
+void Chrono::add(Chrono::signed_chrono_t t) {
+  _offset = safeAdd(_offset, t);
 }
 
 bool Chrono::isRunning() const {
@@ -125,7 +148,8 @@ void Chrono::_init(chrono_t (*getTime_)(void), bool startNow) {
   if (startNow)
     restart();
   else {
-    _startTime = _offset = 0;
+    _startTime = 0;
+    _offset = 0;
     _isRunning = false;
   }
 }
