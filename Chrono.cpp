@@ -115,7 +115,7 @@ bool Chrono::isRunning() const {
 }
 
 void Chrono::delay(Chrono::chrono_t time) {
-  time = safeAdd(time, elapsed())
+  time = safeAdd(time, elapsed());
   while (!hasPassed(time));
 }
 
