@@ -114,12 +114,12 @@ bool Chrono::isRunning() const {
 }
 
 void Chrono::delay(Chrono::chrono_t time) {
-  time += elapsed();
+  time = safeAdd(time, elapsed())
   while (!hasPassed(time));
 }
 
 Chrono::chrono_t Chrono::elapsed() const {
-  return _offset + (_isRunning ? (_getTime() - _startTime) : 0);
+  return _isRunning ? safeAdd(_offset, _getTime() -_startTime) : _offset;
 }
 
 bool Chrono::hasPassed(Chrono::chrono_t timeout) const
