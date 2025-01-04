@@ -49,8 +49,10 @@ public:
 
 #if defined(ARDUINO_ARC32_TOOLS)
   typedef uint64_t chrono_t;
+  typedef int64_t signed_chrono_t;
 #else
   typedef unsigned long chrono_t;
+  typedef long signed_chrono_t;
 #endif
 
   // Different sorts of ways to get time.
@@ -61,7 +63,7 @@ public:
   chrono_t _startTime;
 
   // Time offset.
-  chrono_t long _offset;
+  chrono_t _offset;
 
   // Time function.
   chrono_t (*_getTime)(void);
@@ -96,8 +98,8 @@ public:
   // Resumes the chronometer.
   void resume();
 
-  /// Adds some time to the chronometer.
-  void add(chrono_t t);
+  /// Adds/subtracts some time to the chronometer.
+  void add(signed_chrono_t t);
   
   /// Returns the elapsed time since start (in milliseconds).
   chrono_t elapsed() const;

@@ -15,8 +15,11 @@ void loop() {
     Serial.println("Stop 5 sec");
     chrono.stop();
     printChrono();
-    Serial.println("Add 2000 ms");
-    chrono.add(2000);
+    Serial.println("Add 3000 ms");
+    chrono.add(3000);
+    printChrono();
+    Serial.println("Subtract 1000 ms");
+    chrono.add(-1000);
     printChrono();
     Serial.println("Resume + wait 1000 ms");
     chrono.resume();
@@ -35,5 +38,5 @@ void loop() {
 }
 
 void printChrono() {
- Serial.print("Elapsed: "); Serial.print(chrono.elapsed()); Serial.print(" ms ("); Serial.print(chrono.isRunning() ? "RUNNING" : "STOPPED"); Serial.println(")");
+  Serial.print("Elapsed: "); Serial.print(chrono.elapsed()); Serial.print(" ms ("); Serial.print(chrono.isRunning() ? "RUNNING" : "STOPPED"); Serial.println(")");
 }
