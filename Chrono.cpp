@@ -36,7 +36,8 @@
 #if defined(ARDUINO_ARC32_TOOLS)
   #define CHRONO_T_MAX UINT64_MAX
 #else
-  #define CHRONO_T_MAX UINT32_MAX
+  #include <limits.h>
+  #define CHRONO_T_MAX ULONG_MAX
 #endif
 
 // Safe addition (prevents overflows and underflows).

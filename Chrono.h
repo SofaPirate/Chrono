@@ -51,8 +51,8 @@ public:
   typedef uint64_t chrono_t;
   typedef int64_t signed_chrono_t;
 #else
-  typedef uint32_t chrono_t;
-  typedef int32_t signed_chrono_t;
+  typedef unsigned long chrono_t;
+  typedef long signed_chrono_t;
 #endif
 
   // Different sorts of ways to get time.
