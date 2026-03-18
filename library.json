@@ -1,0 +1,32 @@
+{
+  "name": "Chrono",
+  "version": "1.2.0",
+  "description": "Chronometer/stopwatch library that counts the time passed since started.",
+  "keywords": [
+    "time",
+    "chrono",
+    "stopwatch",
+    "timer",
+    "millis"
+  ],
+  "homepage": "https://github.com/SofaPirate/Chrono",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SofaPirate/Chrono.git"
+  },
+  "authors": [
+    {
+      "name": "Thomas O Fredericks",
+      "email": "tof@t-o-f.info",
+      "maintainer": true
+    },
+    {
+      "name": "Sofian Audry",
+      "maintainer": true
+    }
+  ],
+  "frameworks": [
+    "arduino"
+  ],
+  "platforms": "*"
+}
