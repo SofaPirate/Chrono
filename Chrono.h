@@ -121,8 +121,8 @@ private:
 
 // PRIVATE
 // ----------------------------------------------------------------
-#define MICRO_MS_CONCAT_(a, b) a##b
-#define MICRO_MS_CONCAT(a, b) MICRO_MS_CONCAT_(a, b)
+#define CHRONO_CONCAT_(a, b) a##b
+#define CHRONO_CONCAT(a, b) CHRONO_CONCAT_(a, b)
 
 
 #define CHRONO_INTSTANTIATE_LOOP_FOR(name,duration) static unsigned long name = millis(); \
@@ -134,9 +134,9 @@ private:
 // PUBLIC
 // ----------------------------------------------------------------
 
-#define CHRONO_ONCE_EVERY(interval) CHRONO_INTSTANTIATE_EVERY( MICRO_MS_CONCAT(_chrono_, __COUNTER__), interval)                                                       \
+#define CHRONO_ONCE_EVERY(interval) CHRONO_INTSTANTIATE_EVERY( CHRONO_CONCAT(_chrono_, __COUNTER__), interval)                                                       \
 
-#define CHRONO_LOOP_FOR(duration)  CHRONO_INTSTANTIATE_LOOP_FOR( MICRO_MS_CONCAT(_chrono_, __COUNTER__), duration)                                                       \
+#define CHRONO_LOOP_FOR(duration)  CHRONO_INTSTANTIATE_LOOP_FOR( CHRONO_CONCAT(_chrono_, __COUNTER__), duration)                                                       \
 
 
 #endif
