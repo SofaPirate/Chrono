@@ -128,7 +128,7 @@ private:
 #define CHRONO_INTSTANTIATE_LOOP_FOR(name,duration) static unsigned long name = millis(); \
     while (millis() - name < duration )
 
-#define CHRONO_INTSTANTIATE_EVERY(name,interval) static Chrono name(); \
+#define CHRONO_INTSTANTIATE_EVERY(name,interval) static Chrono name; \
     if (name.hasPassed(interval, true)) 
 
 // PUBLIC
