@@ -119,6 +119,26 @@ private:
   void _init(chrono_t (*getTime_)(void), bool startNow);
 };
 
+// PRIVATE
+// ----------------------------------------------------------------
+#define MICRO_MS_CONCAT_(a, b) a##b
+#define MICRO_MS_CONCAT(a, b) MICRO_MS_CONCAT_(a, b)
+
+
+#define CHRONO_INTSTANTIATE_LOOP_FOR(name,duration) static unsigned long name = millis(); \
+    while (millis() - name < duration )
+
+#define CHRONO_INTSTANTIATE_EVERY(name,interval) static Chrono name(); \
+    if (name.hasPassed(interval, true)) 
+
+// PUBLIC
+// ----------------------------------------------------------------
+
+#define CHRONO_ONCE_EVERY(interval) CHRONO_INTSTANTIATE_EVERY( MICRO_MS_CONCAT(_chrono_, __COUNTER__), interval)                                                       \
+
+#define CHRONO_LOOP_FOR(duration)  CHRONO_INTSTANTIATE_LOOP_FOR( MICRO_MS_CONCAT(_chrono_, __COUNTER__), duration)                                                       \
+
+
 #endif
 
 

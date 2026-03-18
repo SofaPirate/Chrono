@@ -7,7 +7,7 @@ Chronometer/stopwatch library that counts the time passed since started.
 ## Repository
 
 * Browse the source code here: http://github.com/SofaPirate/Chrono
-* Download the latest version here : https://github.com/SofaPirate/Chrono/archive/master.zip
+* Download the latest release here : https://github.com/SofaPirate/Chrono/releases/latest
 
 ## Documentation
 
