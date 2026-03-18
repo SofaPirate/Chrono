@@ -1,6 +1,6 @@
 {
   "name": "Chrono",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Chronometer/stopwatch library that counts the time passed since started.",
   "keywords": [
     "time",
